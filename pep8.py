@@ -113,9 +113,8 @@ except NameError:
 
 DEFAULT_EXCLUDE = '.svn,CVS,.bzr,.hg,.git'
 DEFAULT_IGNORE = 'E24'
-MAX_LINE_LENGTH = Conventional.get_rule("Python/CodeIndentation/LineWidth") or 79
-
-INDENT_LEVEL = Conventional.get_rule("Python/CodeIndentation/NumIndent") or 79
+MAX_LINE_LENGTH = Conventional.get_rule("CodeIndentation/LineWidth") or 79
+INDENT_LEVEL = Conventional.get_rule("CodeIndentation/NumIndent") or 79
 
 INDENT_REGEX = re.compile(r'([ \t]*)')
 RAISE_COMMA_REGEX = re.compile(r'raise\s+\w+\s*(,)')
@@ -127,7 +126,6 @@ WHITESPACE_AROUND_OPERATOR_REGEX = \
 EXTRANEOUS_WHITESPACE_REGEX = re.compile(r'[[({] | []}),;:]')
 WHITESPACE_AROUND_NAMED_PARAMETER_REGEX = \
     re.compile(r'[()]|\s=[^=]|[^=!<>]=\s')
-
 
 WHITESPACE = ' \t' #TODO Here: Conventional on which one is allowed
 

@@ -112,6 +112,7 @@ except NameError:
 DEFAULT_EXCLUDE = '.svn,CVS,.bzr,.hg,.git'
 DEFAULT_IGNORE = 'E24'
 MAX_LINE_LENGTH = 79
+INDENT_LEVEL = 4
 
 INDENT_REGEX = re.compile(r'([ \t]*)')
 RAISE_COMMA_REGEX = re.compile(r'raise\s+\w+\s*(,)')
@@ -378,8 +379,8 @@ def indentation(logical_line, previous_logical, indent_char,
     Okay: a = 1\nb = 2
     E113: a = 1\n    b = 2
     """
-    if indent_char == ' ' and indent_level % 4:
-        return 0, "E111 indentation is not a multiple of four"
+    if indent_char == ' ' and indent_level % INDENT_LEVEL:
+        return 0, "E111 indentation is not a multiple of %d" % (INDENT_LEVEL)
     indent_expect = previous_logical.endswith(':')
     if indent_expect and indent_level <= previous_indent_level:
         return 0, "E112 expected an indented block"
